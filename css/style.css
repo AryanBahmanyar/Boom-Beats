@@ -1,0 +1,196 @@
+/* if browser's theme is set to light... */
+@media (prefers-color-scheme: light) {
+  .card,
+  #display-options,
+  #error-message {
+    background-color: #d0cfcf;
+  }
+  .card:hover {
+    background-color: #9b9b9b;
+  }
+}
+/* if browser's theme is set to dark... */
+@media (prefers-color-scheme: dark) {
+  .card,
+  #display-options,
+  #error-message {
+    background-color: #0c151c;
+  }
+  .card:hover {
+    background-color: #040a0f;
+  }
+}
+#display-options {
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+
+  /* sets 2 columns for the grid display, with the second one being 3 times as wide as the first */
+  /* fr = fraction */
+  grid-template-columns: 1fr 3fr;
+}
+#sort-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#sort-options > div > p {
+  margin-top: 0;
+}
+.card {
+  min-width: 180px;
+  max-width: 14vw;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 1vw;
+
+  /* transition: creates a transition to smoothly animate the specified property
+       of the element in the specified amount of time */
+
+  /* transition happens whenever the state of the element changes and the specified
+       property is defined in that state (in this case, when cursor hovers over the
+       element, since background-color is defined in .card:hover on lines 7 and 16) */
+  transition: background-color 1s;
+}
+.card > div {
+  aspect-ratio: 1; /* sets the width and height to be the same length */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* hides any part of child elements that exceed the bounds */
+}
+.card img {
+  width: 100%;
+  height: 100%;
+
+  /* object-fit property with the value, cover, scales the element proportionally to cover all the */
+  /* space in the parent element with some parts overflowing, depending on the image's aspect ratio */
+  object-fit: cover;
+  transition:
+    border-radius 2s,
+    width 2s,
+    height 2s,
+    box-shadow 3s;
+  user-select: none;
+}
+.card img:hover {
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 90%;
+  height: 90%;
+
+  /* box-shadow: adds a rectangular shadow, or glow effect in this case */
+  /* parameters: x_offset, y_offset, blur_amount, spread_distance, color */
+  /* multiple shadows can be stacked on top of each other in a single box-shadow property to create a gradient effect */
+  box-shadow:
+    -2px -2px 6px 3px deepskyblue,
+    2px 2px 6px 3px deeppink,
+    0 0 10px 5px plum;
+  animation: rotateHue 5s infinite; /* change the hue in a continuous loop with each cycle taking 5 seconds */
+}
+/* animation to change the hue of the element its applied to */
+/* hue-rotate changes the color according to the color wheel (deg = degrees) */
+@keyframes rotateHue {
+  0% {
+    /* the progress of the animation in percentage */
+    filter: hue-rotate(0deg); /* start animaion with no hue change */
+  }
+  100% {
+    filter: hue-rotate(
+      360deg
+    ); /* end animation with the starting hue after going through and applying all them */
+  }
+}
+.card > h3,
+.card > p {
+  margin: 5px 0;
+}
+.card > p {
+  color: gray;
+}
+#songs {
+  display: grid;
+  width: fit-content;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* if viewport's width is 660 pixels or less... */
+@media screen and (max-width: 660px) {
+  #songs {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* sets 2 columns of equal width for the cards list grid display */
+  }
+}
+/* if viewport's width is 661 pixels or greater... */
+@media screen and (min-width: 661px) {
+  #songs {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* sets 3 columns of equal length for the cards list grid display */
+  }
+}
+#error-message {
+  color: red;
+  border-radius: 5px;
+  padding: 10px;
+}
+h1 {
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+  font-size: max(6vw, 4rem); /* chooses the greatest value */
+  font-style: normal;
+  color: deepskyblue;
+  transition:
+    color 2s,
+    transform 2s,
+    font-size 2s,
+    text-shadow 2s;
+
+  /* makes the element not selectable with cursor */
+  user-select: none;
+}
+h1:hover {
+  color: cyan;
+  transform: translateX(3rem); /* shifts the element over to the right */
+
+  /* text-shadow parameters: x_offset, y_offset, blur_radius, color; */
+  /* the offset parameters and blur radius parameter can be omitted to set their default value of 0 */
+  /* multiple shadows can be added to one text-shadow property */
+  text-shadow:
+    0.75em 0.25em 2px rgba(255, 20, 145, 0.5),
+    -0.75em -0.25em 4px rgba(200, 160, 255, 0.5);
+}
+#slogan {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+  animation: textJitter 1.5s infinite;
+  animation-timing-function: linear; /* changes the transition between keyframes to be linear (ease by default) */
+}
+@keyframes textJitter {
+  0% {
+    color: cyan;
+    text-shadow: 0 -0.2em 2px deeppink;
+  }
+  33% {
+    color: deepskyblue;
+    transform: translateX(1em) translateY(-0.5em);
+    text-shadow: -0.4em 0.2em 2px plum;
+  }
+  66% {
+    color: deeppink;
+    transform: translateY(0.5em);
+    text-shadow: 0.4em -0.2em 2px cyan;
+  }
+  100% {
+    color: lightskyblue;
+    text-shadow: 0 -0.2em 2px deeppink;
+  }
+}

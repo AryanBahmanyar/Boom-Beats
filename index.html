@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=500, initial-scale=1" />
+
+    <!-- Change this to your name-->
+    <meta name="Author's Name" content="Aryan Bahmanyar" />
+
+    <title>Boom Beats</title>
+    <!-- Classless CSS Stylesheet - https://watercss.kognise.dev/ -->
+    <link rel="stylesheet" href="./css/water.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- Font for first-level heading (h1) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <!-- Change this to your App's info -->
+      <h1>Boom Beats</h1>
+      <h3 id="slogan">
+        Boom to the beat!<br />
+        The hub for all the lit rap & hip-hop hits! &#128293;&#128293;&#128293;
+      </h3>
+    </header>
+
+    <nav id="menu">
+      <!-- Dynamically create your menu category buttons here -->
+    </nav>
+
+    <hr />
+
+    <div id="display-options">
+      <div>
+        <input type="checkbox" id="explicit-filter" checked />
+        <label for="explicit-filter">Filter explicit content</label>
+      </div>
+      <div id="sort-options">
+        <div>
+          <p>Sort By:</p>
+          <div>
+            <input type="radio" id="sort-by-name" name="sort-by" checked />
+            <label for="sort-by-name">Name</label>
+          </div>
+          <div>
+            <input type="radio" id="sort-by-year" name="sort-by" />
+            <label for="sort-by-year">Year</label>
+          </div>
+          <div>
+            <input type="radio" id="sort-by-duration" name="sort-by" />
+            <label for="sort-by-duration">Duration</label>
+          </div>
+        </div>
+        <div>
+          <p>Order:</p>
+          <div>
+            <input type="radio" id="sort-ascending" name="sort-order" checked />
+            <label for="sort-ascending">Ascending</label>
+          </div>
+          <div>
+            <input type="radio" id="sort-descending" name="sort-order" />
+            <label for="sort-descending">Descending</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <h2 id="selected-artist">
+        <!-- Dynamically update the selected category title -->
+      </h2>
+      <div id="songs"></div>
+      <p id="error-message">
+        Sorry, no results found. Try changing your filter preferences, or come back later, as we
+        continue to add more content!
+      </p>
+    </main>
+
+    <!-- JavaScript Data Files -->
+    <script src="./js/artists.js"></script>
+    <script src="./js/songs.js"></script>
+
+    <!-- Main App JavaScript File -->
+    <script src="./js/app.js"></script>
+  </body>
+  <footer>
+    <p>
+      All images used are under the
+      <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank"
+        >Creative Commons (CC)</a
+      >
+      license. The font used for the heading is licensed under the
+      <a href="https://openfontlicense.org/" target="_blank">Open Font License</a>.
+    </p>
+  </footer>
+</html>
